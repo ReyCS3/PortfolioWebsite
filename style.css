@@ -1,0 +1,588 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    color: white; /* Make sure text is readable! */
+    line-height: 1.6;
+    padding-top: 60px; /* Push the body down so the top of the content isn't hidden behind the fixed nav */
+}
+
+/* This creates the slow movement */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Typography & Links */
+h1, h2, h3 {
+    margin-bottom: 10px;
+    color: #222;
+}
+
+p {
+    margin-bottom: 20px;
+    color: #555;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* Button Styling */
+.button {
+    display: inline-block;
+    background-color: #0078D7;
+    color: white;
+    padding: 10px 24px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #005A9E;
+}
+
+/* Homepage Layout */
+.hero {
+    /* FIX: Subtract the 60px top navbar height so the scroll arrow isn't pushed off-screen */
+    min-height: calc(100vh - 60px);
+    position: relative;
+}
+
+.hero-content {
+    position: fixed; /* This makes the box float above the page */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Keeps it perfectly centered initially */
+    width: 100%;
+    max-width: 600px;
+    z-index: 100; /* Ensures it stays on top of the text */
+    
+    /* This creates the smooth, cinematic movement */
+    transition: all 0.9s cubic-bezier(0.22, 1, 0.36, 1); 
+    
+    /* Keep your existing colors and borders below */
+    padding: 40px; 
+    border-radius: 20px; 
+    background-color: rgba(255, 255, 255, 0.85); 
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); 
+    backdrop-filter: blur(8px); 
+
+    /* FIX: Forces everything inside the box to be perfectly centered */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* NEW: The state the box enters when you scroll down */
+.hero-content.scrolled-down {
+    top: 50%; /* Moves it vertically to the center */
+    left: 25%; /* Anchors it exactly in the middle of the left half */
+    transform: translate(-50%, -50%) scale(0.85); /* Centers the box perfectly on those coordinates */
+}
+
+.profile-pic {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 4px solid white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    background-color: #ddd; /* Placeholder color if image is missing */
+}
+
+/* Projects Page Layout */
+.top-nav {
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.back-link {
+    color: #0078D7;
+    font-weight: bold;
+}
+
+.projects-section {
+    padding: 40px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.projects-section h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2rem;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+/* Project Card Styling */
+.project-card {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+.project-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    background-color: #ddd; /* Placeholder color */
+}
+
+.project-info {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.project-info .button {
+    margin-top: auto; /* Pushes the button to the bottom of the card */
+    text-align: center;
+}
+
+/* Social Links Section */
+.social-links {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Adds space between the buttons */
+    flex-wrap: wrap; /* Ensures they stack neatly on very small mobile screens */
+}
+
+.social-btn {
+    background-color: rgba(0, 0, 0, 0.05); /* Very faint background */
+    color: #333;
+    padding: 8px 16px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.social-btn:hover {
+    background-color: rgba(0, 0, 0, 0.1); /* Darkens slightly on hover */
+    transform: translateY(-2px); /* Creates a subtle "lift" effect */
+}
+
+button.social-btn {
+    cursor: pointer;
+}
+
+/* CASE STUDY PAGE (Beach Circle) */
+
+/* The Hero Section */
+.case-study-hero {
+    text-align: center;
+    padding: 60px 20px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.case-study-hero h1 {
+    font-size: 3.5rem; /* Massive, impactful title */
+    margin-bottom: 10px;
+}
+
+.case-study-hero .subtitle {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 40px;
+}
+
+.hero-image-large {
+    width: 100%;
+    max-height: 500px; /* Keeps it from being too tall on huge screens */
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    background-color: #ddd; /* Placeholder */
+}
+
+/* The Meta Details Bar (Role, Tech, Team) */
+.project-meta {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.meta-item {
+    flex: 1;
+    min-width: 200px;
+    text-align: center;
+    padding: 10px;
+}
+
+.meta-item h3 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #888;
+    margin-bottom: 5px;
+}
+
+.meta-item p {
+    font-weight: 600;
+    color: #222;
+    margin-bottom: 0;
+}
+
+/* Deep Dive Content Area */
+.case-study-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px 60px;
+}
+
+.text-block {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.divider {
+    border: 0;
+    height: 1px;
+    background: #e0e0e0;
+    margin: 60px 0;
+}
+
+/* Alternating Feature Rows */
+.feature-row {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+/* Reverses the layout for the alternating look */
+.feature-row.reverse {
+    flex-direction: row-reverse;
+}
+
+.feature-text {
+    flex: 1;
+}
+
+.feature-text ul {
+    margin-top: 15px;
+    padding-left: 20px;
+    color: #555;
+}
+
+.feature-text li {
+    margin-bottom: 8px;
+}
+
+.feature-image {
+    flex: 1;
+}
+
+.feature-image img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    background-color: #ddd; /* Placeholder */
+}
+
+/* Mobile Responsiveness for Feature Rows */
+@media (max-width: 768px) {
+    .feature-row, .feature-row.reverse {
+        flex-direction: column;
+    }
+}
+
+/* =========================================
+   ABOUT ME SECTION
+   ========================================= */
+.about-section {
+    background-color: transparent; 
+    padding-top: 60px;
+    padding-bottom: 60px;
+    min-height: 100vh;
+    
+    /* Adjusted to 50% to give the left side perfectly to the floating box */
+    padding-left: 50%; 
+    padding-right: 5%;
+    position: relative;
+    z-index: 10;
+    
+    /* Flexbox added here to vertically center the about container */
+    display: flex;
+    align-items: center; 
+}
+
+.about-container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.about-container h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    text-align: center;
+    color: #222;
+}
+
+.about-content {
+    display: flex;
+    flex-direction: column; /* Stacks the text and skills vertically on the right */
+    gap: 30px;
+    
+    /* Animation starting point: Hidden and shifted slightly left */
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.15s; /* The 0.15s adds a slight delay so the box moves first */
+}
+
+.about-content.visible {
+    opacity: 1;
+    transform: translateX(0); /* Slides to its normal position */
+}
+
+.about-text {
+    flex: 2;
+    /* Added background, padding, radius, and shadow to match the skills column */
+    background-color: #f9f9fb;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    line-height: 1.8;
+    color: #555;
+}
+
+/* Removed margin-bottom from the last paragraph so it stays perfectly inside the box */
+.about-text p:last-child {
+    margin-bottom: 0;
+}
+
+.skills-column {
+    flex: 1;
+    background-color: #f9f9fb;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+}
+
+.skills-column h3 {
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    color: #222;
+    text-align: center;
+}
+
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.skill-tag {
+    background-color: #0078D7;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* =========================================
+   SCROLL INDICATOR ANIMATION
+   ========================================= */
+.scroll-indicator {
+    position: absolute;
+    bottom: 50px; 
+    left: 50%;
+    transform: translateX(-50%); /* Perfectly centers it horizontally */
+    text-align: center;
+    color: #ffffff; 
+    opacity: 0.9; 
+    animation: bounce 2s infinite; /* Runs the bounce animation on a loop */
+}
+
+.scroll-indicator p {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    color: inherit;
+}
+
+.scroll-indicator .chevron {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* The Keyframes create the bouncing math */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translate(-50%, 0);
+    }
+    40% {
+        transform: translate(-50%, -15px);
+    }
+    60% {
+        transform: translate(-50%, -7px);
+    }
+}
+
+/* =========================================
+   GLOBAL TOP NAVIGATION
+   ========================================= */
+.global-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    z-index: 1000; /* Ensures it stays above all other content */
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: #0078D7;
+}
+
+.nav-links a {
+    margin-left: 25px;
+    color: #333;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #0078D7;
+}
+
+/* =========================================
+   RIGHT-SIDE PROJECT NAVIGATION
+   ========================================= */
+.project-sidebar {
+    position: fixed;
+    top: 50%; /* Vertically centers it */
+    right: 0;
+    transform: translateY(-50%);
+    background-color: white;
+    padding: 25px 20px;
+    border-radius: 12px 0 0 12px; /* Rounds the left corners */
+    box-shadow: -4px 4px 20px rgba(0,0,0,0.08);
+    z-index: 900;
+    width: 220px;
+}
+
+.project-sidebar h4 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #888;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 8px;
+}
+
+.project-sidebar ul {
+    list-style: none;
+}
+
+.project-sidebar li {
+    margin-bottom: 12px;
+}
+
+.project-sidebar a {
+    color: #555;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s;
+    display: block;
+}
+
+.project-sidebar a:hover {
+    color: #0078D7;
+    transform: translateX(-5px); /* Gentle hover nudge */
+}
+
+.project-sidebar a.active {
+    color: #0078D7;
+    font-weight: 700;
+}
+
+/* Hide the sidebar on smaller screens so it doesn't block the text */
+@media (max-width: 1100px) {
+    .project-sidebar {
+        display: none;
+    }
+}
+
+/* Disable the complex layout shift on mobile screens */
+@media (max-width: 1024px) {
+    .hero-content {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none !important; /* Forces it to stay centered */
+        margin: 100px auto 0;
+    }
+    
+    .about-section {
+        padding-left: 20px; /* Removes the massive left margin */
+        padding-top: 40px;
+        display: block; /* Turns off vertical centering for mobile */
+    }
+    
+    .about-content {
+        opacity: 1; /* Keeps text permanently visible */
+        transform: none !important;
+    }
+}

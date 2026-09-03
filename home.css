@@ -1,0 +1,209 @@
+/* =========================================================
+   HOME — intro band, work index, about
+   Requires base.css to be loaded first.
+   ========================================================= */
+
+/* ---------- intro band ----------
+   Deliberately NOT a full viewport. It's sized so the first row of
+   Selected Work is already peeking above the fold — that's what tells
+   a visitor there's something worth scrolling to. */
+.intro {
+  padding: 64px 0 56px;
+  border-bottom: 1px solid var(--line);
+}
+.intro .wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 168px;
+  gap: 48px;
+  align-items: start;
+}
+
+.intro h1 {
+  font-size: clamp(2.3rem, 6.4vw, 3.9rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  margin-bottom: 20px;
+}
+
+.intro-lede {
+  font-size: clamp(1.05rem, 2.1vw, 1.24rem);
+  color: var(--ink);
+  max-width: 54ch;
+  margin-bottom: 28px;
+}
+
+.intro-photo {
+  width: 168px;
+  height: 168px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: var(--rail) solid var(--gold);
+}
+
+.intro-links { display: flex; flex-wrap: wrap; gap: 10px; }
+.intro-links a,
+.intro-links button {
+  font-family: var(--display);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 9px 18px;
+  cursor: pointer;
+  transition: border-color 0.18s ease, background-color 0.18s ease;
+}
+.intro-links a:hover,
+.intro-links button:hover { border-color: var(--indigo); background: var(--surface); }
+
+/* ---------- work index ----------
+   Rows, not a card grid. Rows tolerate projects with uneven image quality,
+   give each entry room for a real sentence, and scale as you add more. */
+.work-row {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 40px;
+  align-items: center;
+  padding: 40px 0;
+  border-top: 1px solid var(--line);
+}
+.work-row:first-of-type { border-top: 0; }
+
+.work-thumb {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.work-row h3 {
+  font-size: clamp(1.3rem, 2.7vw, 1.65rem);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.work-row h3 a { border-bottom: 2px solid transparent; transition: border-color 0.18s ease; }
+.work-row h3 a:hover { border-bottom-color: var(--gold); }
+
+.work-row p { margin-bottom: 16px; max-width: 62ch; }
+
+.work-tags { list-style: none; display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 18px; }
+.work-tags li {
+  font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 0.78rem;
+  color: var(--slate);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 4px 9px;
+}
+
+.work-links { display: flex; flex-wrap: wrap; gap: 18px; }
+.work-links a {
+  font-family: var(--display);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--indigo);
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 2px;
+}
+.work-links a:hover { border-bottom-color: var(--indigo); }
+
+.work-status {
+  font-family: var(--display);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--ink);
+  background: var(--gold);
+  border-radius: 3px;
+  padding: 3px 9px;
+  margin-left: 10px;
+  vertical-align: 4px;
+}
+
+/* ---------- about ---------- */
+.about-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+  gap: 56px;
+  margin-top: 30px;
+}
+.about-grid p { margin-bottom: 1.1em; max-width: 64ch; }
+.about-grid p:last-child { margin-bottom: 0; }
+
+.about-side h3 {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--indigo);
+  margin-bottom: 14px;
+}
+.skill-list { list-style: none; }
+.skill-list li {
+  font-family: var(--display);
+  font-size: 0.93rem;
+  font-weight: 500;
+  padding: 8px 0 8px 20px;
+  border-top: 1px solid var(--line);
+  position: relative;
+}
+.skill-list li:first-child { border-top: 0; }
+.skill-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 17px;
+  width: 9px;
+  height: 9px;
+  border-radius: 2px;
+  background: var(--gold);
+}
+
+/* ---------- contact ---------- */
+.contact-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 26px; }
+
+/* ---------- responsive ---------- */
+@media (max-width: 860px) {
+  .intro { padding: 44px 0 40px; }
+  .intro .wrap { grid-template-columns: 1fr; gap: 28px; }
+  .intro-photo { width: 128px; height: 128px; order: -1; }
+  .work-row { grid-template-columns: 1fr; gap: 22px; padding: 34px 0; }
+  .work-thumb { aspect-ratio: 16 / 10; max-width: 460px; }
+  .about-grid { grid-template-columns: 1fr; gap: 34px; }
+}
+
+@media (max-width: 560px) {
+  .contact-actions { flex-direction: column; }
+  .contact-actions .btn { text-align: center; }
+}
+
+/* ---------- projects page: page header + secondary builds ---------- */
+.page-head {
+  padding: 56px 0 44px;
+  border-bottom: 1px solid var(--line);
+}
+.page-head h1 {
+  font-size: clamp(2.1rem, 5.6vw, 3.3rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  margin-bottom: 16px;
+}
+.page-head p { font-size: 1.08rem; max-width: 60ch; }
+
+.other-builds { list-style: none; margin-top: 26px; }
+.other-builds li {
+  border-top: 1px solid var(--line);
+  padding: 20px 0;
+  max-width: 74ch;
+}
+.other-builds strong {
+  display: block;
+  font-family: var(--display);
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+.other-builds span { font-size: 0.97rem; line-height: 1.65; color: var(--slate); }

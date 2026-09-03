@@ -1,0 +1,185 @@
+/* =========================================================
+   BASE — shared tokens, navigation, footer, buttons
+   Load this FIRST on every page, before any page-specific
+   stylesheet. It replaces style.css entirely.
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap');
+
+:root {
+  --ink:     #14181f;
+  --slate:   #5a6272;
+  --page:    #edf0f6;
+  --surface: #ffffff;
+  --line:    #d7dce5;
+  --gold:    #ffc72c;
+  --indigo:  #4c3fbf;
+
+  --display: 'Space Grotesk', 'Segoe UI', system-ui, sans-serif;
+  --body:    'Source Serif 4', Georgia, serif;
+
+  --rail: 3px;
+  --nav-h: 62px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--page);
+  color: var(--ink);
+  font-family: var(--body);
+  line-height: 1.7;
+  padding-top: var(--nav-h);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--display);
+  color: var(--ink);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+}
+
+p { color: var(--slate); }
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+
+::selection { background: var(--gold); color: var(--ink); }
+
+:focus-visible {
+  outline: 3px solid var(--indigo);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Skip link — keyboard users shouldn't have to tab the nav on every page */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 8px;
+  background: var(--ink);
+  color: var(--surface);
+  font-family: var(--display);
+  font-size: 0.9rem;
+  padding: 10px 18px;
+  border-radius: 4px;
+  z-index: 2000;
+}
+.skip-link:focus { left: 16px; }
+
+.wrap {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* ---------- navigation ---------- */
+.global-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--nav-h);
+  background: rgba(237, 240, 246, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+  z-index: 1000;
+}
+.nav-container {
+  max-width: 1060px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-logo {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: -0.02em;
+}
+.nav-links { display: flex; gap: 26px; }
+.nav-links a {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 0.93rem;
+  color: var(--slate);
+  padding: 4px 0;
+  border-bottom: 2px solid transparent;
+  transition: color 0.18s ease, border-color 0.18s ease;
+}
+.nav-links a:hover,
+.nav-links a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--gold); }
+
+/* ---------- buttons ---------- */
+.btn {
+  display: inline-block;
+  font-family: var(--display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 12px 26px;
+  border-radius: 6px;
+  border: 2px solid var(--ink);
+  background: var(--ink);
+  color: var(--surface);
+  cursor: pointer;
+  transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+}
+.btn:hover { background: var(--indigo); border-color: var(--indigo); }
+
+.btn-ghost { background: transparent; color: var(--ink); }
+.btn-ghost:hover { background: var(--gold); border-color: var(--gold); color: var(--ink); }
+
+/* ---------- section headings ---------- */
+.section { padding: 78px 0; border-top: 1px solid var(--line); }
+.section > .wrap > h2 {
+  font-size: clamp(1.5rem, 3.2vw, 2.05rem);
+  font-weight: 700;
+  padding-left: 18px;
+  border-left: var(--rail) solid var(--gold);
+  margin-bottom: 14px;
+}
+.section-lede { font-size: 1.08rem; max-width: 62ch; margin-bottom: 8px; }
+
+/* ---------- footer ---------- */
+.site-foot {
+  border-top: 1px solid var(--line);
+  padding: 40px 0 60px;
+  font-size: 0.88rem;
+  color: var(--slate);
+}
+.site-foot .wrap { display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; }
+.site-foot a { border-bottom: 1px solid var(--line); }
+.site-foot a:hover { border-bottom-color: var(--indigo); color: var(--ink); }
+
+/* ---------- reveal on scroll ----------
+   Content is visible by default. JS adds .js-reveal to <html>, which is the
+   only thing that hides it. If the script fails or never runs, nothing
+   disappears — the old version hid About Me permanently when JS broke. */
+.js-reveal .reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.js-reveal .reveal.is-visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js-reveal .reveal { opacity: 1; transform: none; transition: none; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .wrap, .nav-container { padding: 0 20px; }
+  .section { padding: 56px 0; }
+  .nav-links { gap: 18px; }
+  .nav-links a { font-size: 0.87rem; }
+}

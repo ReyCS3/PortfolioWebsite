@@ -3,53 +3,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects | Rey Sioson</title>
-    <link rel="stylesheet" href="style.css">
+
+    <title>Projects — Rey Sioson</title>
+    <meta name="description" content="Projects by Reynaldo Sioson III: Beach Circle, a Flutter and Firebase campus app for CSULB; CAD Build Battles, a multiplayer Roblox game with parametric modelling; and CAD design for 3D fabrication.">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Projects — Rey Sioson">
+    <meta property="og:description" content="A Flutter and Firebase campus app, a multiplayer Roblox game with CAD modelling tools, and 3D fabrication work.">
+    <meta property="og:image" content="https://reycs3.github.io/PortfolioWebsite/img/thumb-beach-circle.jpg">
+    <meta property="og:url" content="https://reycs3.github.io/PortfolioWebsite/projects.html">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="home.css">
 </head>
 <body>
-    <!-- GLOBAL TOP NAVIGATION -->
+
+    <a href="#work" class="skip-link">Skip to projects</a>
+
     <nav class="global-nav">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">Rey Sioson</a>
             <div class="nav-links">
-                <!-- Links back to the homepage sections -->
                 <a href="index.html">Home</a>
-                <a href="projects.html">All Projects</a>
-                <a href="https://linkedin.com/in/reynaldo-sioson-8279ab2aa" target="_blank">LinkedIn</a>
+                <a href="projects.html" aria-current="page">All projects</a>
+                <a href="index.html#about">About</a>
+                <a href="https://linkedin.com/in/reynaldo-sioson-8279ab2aa" target="_blank" rel="noopener">LinkedIn</a>
             </div>
         </div>
     </nav>
-    
-    <header class="top-nav">
-        <a href="index.html" class="back-link">← Back to Home</a>
+
+    <header class="page-head">
+        <div class="wrap">
+            <h1>Projects</h1>
+            <p>
+                Everything I've built that's worth explaining, with the reasoning behind it
+                rather than just a feature list.
+            </p>
+        </div>
     </header>
 
-    <section class="projects-section">
-        <h2>My Projects</h2>
-        
-        <div class="project-grid">
-            <!-- Project 1 -->
-            <div class="project-card">
-                <img src="beachCircle.PNG" alt="Beach Circle Preview" class="project-img">
-                <div class="project-info">
-                    <h3>Beach Circle</h3>
-                    <p>A senior project web and mobile campus platform built utilizing Flutter and a Firebase backend.</p>
-                    <a href="beach-circle.html" class="button">View Project</a>
-                </div>
-            </div>
+    <main>
 
-            <!-- Project 2 -->
-            <div class="project-card">
-                <img src="project2-img.jpg" alt="Cad/ 3D Printing Preview" class="project-img">
-                <div class="project-info">
-                    <h3>CAD Models/ 3D Prints</h3>
-                    <p>Various computer-aided design models and 3D printed prototypes I designed.</p>
-                    <a href="https://link-to-your-project.com" target="_blank" class="button">View Projects</a>
+    <section class="section" id="work" style="border-top:0;">
+        <div class="wrap">
+
+            <!-- 1. BEACH CIRCLE -->
+            <article class="work-row reveal">
+                <a href="beach-circle.html">
+                    <img src="img/thumb-beach-circle.jpg"
+                         alt="Beach Circle campus map showing parking lots with live difficulty status."
+                         class="work-thumb">
+                </a>
+                <div>
+                    <h3><a href="beach-circle.html">Beach Circle</a></h3>
+                    <p>
+                        A Flutter and Firebase app that answers the questions CSULB students guess
+                        at every day: which lot still has parking, which classroom is free, where
+                        there's a working outlet. Nineteen features shipped across two semesters by
+                        a team of five, verified with twenty-five documented test cases spanning
+                        unit through acceptance.
+                    </p>
+                    <ul class="work-tags">
+                        <li>Flutter</li><li>Dart</li><li>Cloud Firestore</li>
+                        <li>Firebase Auth</li><li>Cloud Messaging</li><li>Google Maps</li>
+                    </ul>
+                    <div class="work-links">
+                        <a href="beach-circle.html">Read the case study</a>
+                        <a href="https://youtu.be/3PNRESckmTY" target="_blank" rel="noopener">Watch the demo</a>
+                        <!-- VERIFY: confirm this repo is public before publishing. -->
+                        <a href="https://github.com/21TN2/Beach-Circle" target="_blank" rel="noopener">Source</a>
+                    </div>
                 </div>
-            </div>
-            
-            <!-- Add more project cards by copying the block above -->
+            </article>
+
+            <!-- 2. CAD BUILD BATTLES
+                 TODO: swap img/thumb-cad-build-battles.svg for a real Studio screenshot. -->
+            <article class="work-row reveal">
+                <img src="img/thumb-cad-build-battles.svg"
+                     alt="Placeholder image for CAD Build Battles."
+                     class="work-thumb">
+                <div>
+                    <h3>CAD Build Battles <span class="work-status">In progress</span></h3>
+                    <p>
+                        A round-based multiplayer Roblox game that swaps Minecraft's block palette
+                        for parametric modelling: players sketch on a plane, extrude or revolve it
+                        into a solid, and get scored on what they make. Sole developer &mdash; I design
+                        the systems and drive implementation through Lemonade.gg, an AI assistant that
+                        generates Luau and syncs into Studio, then debug and integrate the result
+                        myself. The architecture is mine: the round state machine, plot allocation
+                        across players, a CAD-style camera that switches between orbit and plane
+                        views, and mesh manipulation built on Roblox's EditableMesh API.
+                    </p>
+                    <ul class="work-tags">
+                        <li>Luau</li><li>Roblox Studio</li><li>EditableMesh</li>
+                        <li>State machines</li><li>Multiplayer</li>
+                    </ul>
+                    <div class="work-links">
+                        <!-- <a href="cad-build-battles.html">Read the case study</a> -->
+                        <a href="https://github.com/ReyCS3" target="_blank" rel="noopener">Case study coming soon</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 3. FABRICATION -->
+            <article class="work-row reveal">
+                <img src="img/thumb-fabrication.jpg"
+                     alt="A gear part mid-print on a Sidewinder X1, the hotend laying down infill under the part cooling fan."
+                     class="work-thumb">
+                <div>
+                    <h3>CAD &amp; 3D fabrication</h3>
+                    <p>
+                        <!-- EDIT: replace this with one specific part — what it was for, and what
+                             changed between the first print and the one that actually fit. The
+                             iteration story is the whole value of this entry. -->
+                        Parts designed in Fusion 360 and printed on a Sidewinder X1. Modelling with
+                        sketches, extrusions, revolves, sweeps and lofts, then iterating on
+                        tolerances and print orientation until the part comes off the bed usable
+                        rather than close.
+                    </p>
+                    <ul class="work-tags">
+                        <li>Fusion 360</li><li>FDM printing</li><li>Tolerance testing</li><li>Slicing</li>
+                    </ul>
+                    <div class="work-links">
+                        <a href="index.html#contact">Ask me about a build</a>
+                    </div>
+                </div>
+            </article>
+
         </div>
     </section>
+
+    <!-- ============ SMALLER BUILDS ============
+         Deliberately a text list, not project rows. These are real and worth
+         mentioning, but they shouldn't compete visually with the work above. -->
+    <section class="section">
+        <div class="wrap">
+            <h2>Smaller builds</h2>
+            <p class="section-lede">Things I've set up or maintained that didn't need a full write-up.</p>
+
+            <ul class="other-builds reveal">
+                <li>
+                    <strong>Self-hosted Minecraft server</strong>
+                    <span>
+                        A Purpur server running on my own machine for friends, tunnelled through
+                        playit.gg because I don't have a public-facing port. Moved off a hosted
+                        provider once it became clear the lag was theirs and not my configuration.
+                        JVM tuned with Aikar's flags on a user-local Temurin install.
+                    </span>
+                </li>
+                <li>
+                    <strong>This site</strong>
+                    <span>
+                        Static HTML and CSS, no framework and no build step, deployed on GitHub
+                        Pages. Built with an AI assistant handling most of the markup while I made
+                        the structural calls &mdash; leading with work instead of the bio, cutting an
+                        animated background that hurt contrast, and rejecting a few ideas of my own
+                        that wouldn't have survived a narrow viewport. One shared token system across
+                        every page, responsive down to phone widths, readable with JavaScript off.
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section" id="contact">
+        <div class="wrap">
+            <h2>Get in touch</h2>
+            <p class="section-lede">Open to software engineering internships and new-grad roles.</p>
+            <div class="contact-actions">
+                <button id="email-btn" type="button" class="btn">Copy email</button>
+                <a href="https://www.linkedin.com/in/reynaldo-sioson-8279ab2aa" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
+                <a href="https://github.com/ReyCS3" target="_blank" rel="noopener" class="btn btn-ghost">GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    </main>
+
+    <footer class="site-foot">
+        <div class="wrap">
+            <p>&copy; 2026 Reynaldo Sioson III</p>
+            <p>Long Beach, California</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>

@@ -3,120 +3,365 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beach Circle | Rey Sioson</title>
-    <link rel="stylesheet" href="style.css">
+
+    <title>Beach Circle — CSULB campus app | Rey Sioson</title>
+    <meta name="description" content="Beach Circle is a Flutter and Firebase app for CSULB students: live parking difficulty, outlet and bathroom finders, campus forums, and food alerts. A CECS 491 senior capstone by a team of five.">
+
+    <!-- Link previews for LinkedIn, Slack, iMessage. Replace the URLs once the site has a domain. -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Beach Circle — CSULB campus app">
+    <meta property="og:description" content="Live parking difficulty, outlet and bathroom finders, campus forums, and push food alerts. Built in Flutter on Firebase by a team of five.">
+    <meta property="og:image" content="https://reycs3.github.io/PortfolioWebsite/img/bc-parking.jpg">
+    <meta property="og:url" content="https://reycs3.github.io/PortfolioWebsite/beach-circle.html">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="beach-circle.css">
 </head>
-<body>
+<body class="bc-page">
+
+    <a href="#main" class="skip-link">Skip to content</a>
+
     <!-- GLOBAL TOP NAVIGATION -->
     <nav class="global-nav">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">Rey Sioson</a>
             <div class="nav-links">
-                <!-- Links back to the homepage sections -->
                 <a href="index.html">Home</a>
-                <a href="projects.html">All Projects</a>
-                <a href="https://linkedin.com/in/reynaldo-sioson-8279ab2aa" target="_blank">LinkedIn</a>
+                <a href="projects.html">All projects</a>
+                <a href="index.html#about">About</a>
+                <a href="https://linkedin.com/in/reynaldo-sioson-8279ab2aa" target="_blank" rel="noopener">LinkedIn</a>
             </div>
         </div>
     </nav>
 
-    <!-- RIGHT-SIDE PROJECT MENU -->
-    <aside class="project-sidebar">
-        <h4>Other Projects</h4>
-        <ul>
-            <!-- The 'active' class highlights the page they are currently on -->
-            <li><a href="beach-circle.html" class="active">Beach Circle</a></li>
-            <li><a href="3d-tycoon.html">3D Printing Tycoon</a></li>
-            <li><a href="launcher.html">Custom CAD Launcher</a></li>
-        </ul>
-    </aside>
-    
-    <header class="top-nav">
-        <a href="projects.html" class="back-link">← Back to Projects</a>
+    <!--
+      NOTE: the old right-side sidebar linked to 3d-tycoon.html and launcher.html,
+      neither of which exists in the repo. Both were 404s. Re-add the sidebar once
+      those pages are real; until then the top nav covers navigation.
+    -->
+
+    <div class="bc-wrap">
+        <a href="projects.html" class="bc-back">&larr; All projects</a>
+    </div>
+
+    <!-- ============ HERO: the demo video does the talking ============ -->
+    <header class="bc-hero">
+        <div class="bc-wrap">
+            <h1>Beach Circle</h1>
+            <p class="bc-lede">
+                Getting through a day at CSULB means guessing: which lot still has spaces, whether
+                any classroom is free to study in, where there's an outlet that works. Beach Circle
+                is a Flutter app that turns those guesses into something you can check before you
+                walk across campus.
+            </p>
+
+            <div class="bc-video">
+                <iframe
+                    src="https://www.youtube.com/embed/3PNRESckmTY"
+                    title="Beach Circle — full app walkthrough"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen loading="lazy"></iframe>
+            </div>
+            <p class="bc-video-note">Full walkthrough of the shipped build.</p>
+
+            <dl class="bc-meta">
+                <div>
+                    <dt>My role</dt>
+                    <!-- VERIFY: name the features you actually owned. Interviewers will
+                         check the repo's commit history, so keep this precise. If AI tooling
+                         did significant work here, say so the way the projects page does —
+                         a claim you can't defend in an interview is worse than a smaller
+                         claim you can. -->
+                    <dd>Full-stack developer &mdash; <em>[name the 2&ndash;3 features you owned]</em></dd>
+                </div>
+                <div>
+                    <dt>Team</dt>
+                    <dd>Five developers: Josue Alfaro-Garcia, Giselle Hernandez, Theresa Nguyen, Tiffany Nguyen, Rey Sioson</dd>
+                </div>
+                <div>
+                    <dt>Stack</dt>
+                    <dd>Flutter, Dart, Firebase Auth, Cloud Firestore, Firebase Cloud Messaging, Google Maps, external weather API</dd>
+                </div>
+                <div>
+                    <dt>Context</dt>
+                    <dd>CECS 491A&ndash;B senior capstone, CSULB. Shipped May 2026.</dd>
+                </div>
+            </dl>
+        </div>
     </header>
 
-    <section class="case-study-hero">
-        <h1>Beach Circle</h1>
-        <p class="subtitle">A comprehensive web and mobile campus platform for CSULB.</p>
-        
-        <img src="beach-circle-hero.jpg" alt="Beach Circle App Devices" class="hero-image-large">
+    <main id="main">
+
+    <!-- ============ SCOPE ============ -->
+    <section class="bc-section">
+        <div class="bc-wrap">
+            <h2>What shipped</h2>
+            <p class="bc-lede">
+                Nineteen features across two semesters, all running against one Firebase project.
+                The three below the fold are the ones worth explaining.
+            </p>
+
+            <div class="bc-inventory">
+                <div>
+                    <h3>Finding things on campus</h3>
+                    <ul class="bc-chips">
+                        <li>Campus map with location pins</li>
+                        <li>Parking difficulty by lot</li>
+                        <li>Bathroom finder with ratings</li>
+                        <li>Outlet finder, filtered by building</li>
+                        <li>Available classrooms</li>
+                        <li>Campus info and resource search</li>
+                        <li>Live campus weather</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Community</h3>
+                    <ul class="bc-chips">
+                        <li>Event board</li>
+                        <li>Student miscellaneous forum</li>
+                        <li>Dorm life forum</li>
+                        <li>Food alerts with push notifications</li>
+                        <li>Save events and posts as interested</li>
+                        <li>Bathroom reviews and amenity tags</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Accounts and safety</h3>
+                    <ul class="bc-chips">
+                        <li>Sign-up with emailed verification code</li>
+                        <li>Role-based posting permissions</li>
+                        <li>Report and moderation queue</li>
+                        <li>Per-category notification settings</li>
+                        <li>Analytics and feedback intake</li>
+                        <li>Maintenance mode for moderators</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section class="project-meta">
-        <div class="meta-item">
-            <h3>My Role</h3>
-            <p>Full-Stack Developer</p>
-        </div>
-        <div class="meta-item">
-            <h3>Tech Stack</h3>
-            <p>Flutter, Firebase, Dart</p>
-        </div>
-        <div class="meta-item">
-            <h3>The Team</h3>
-            <p>Josue Alfaro-Garcia, Giselle Hernandez, Theresa Nguyen, Tiffany Nguyen</p>
+    <!-- ============ DEEP DIVES ============ -->
+    <section class="bc-section">
+        <div class="bc-wrap">
+            <h2>Three features up close</h2>
+
+            <!-- 1. PARKING -->
+            <article class="bc-feature">
+                <div class="bc-feature-media bc-phone">
+                    <img src="img/bc-parking.jpg"
+                         alt="Beach Circle campus map with a parking sheet open, showing Lot 19 at Moderate status with ten users actively searching and zero parked."
+                         loading="lazy">
+                </div>
+                <div>
+                    <h3>Parking difficulty, without any sensors</h3>
+                    <p>
+                        CSULB has no per-space sensor hardware, so there is no ground-truth occupancy
+                        feed to read. The workaround is to measure the students instead of the spaces:
+                        the app counts how many users are actively searching a given lot against how
+                        many have marked themselves parked, and turns that ratio into a difficulty
+                        status on the map.
+                    </p>
+                    <p>
+                        It is a crowdsourced signal, not a measurement, and the UI is deliberate about
+                        saying so &mdash; a lot reads <em>Moderate</em> rather than claiming a space count
+                        it cannot know.
+                    </p>
+                    <ul class="bc-facts">
+                        <li>Lot status derives from live counts of searching versus parked users, held in a <code>parking_lots</code> collection.</li>
+                        <li>Filters narrow the sheet to a lot group &mdash; Pyramid, G lots, E lots, Palo Verde &mdash; instead of scrolling the whole campus.</li>
+                        <li>Parking shares one map module with food alerts, bathrooms, outlets and pins, so all five features draw from the same pin rendering and zoom behaviour.</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- 2. FOOD ALERTS -->
+            <article class="bc-feature bc-flip">
+                <div class="bc-feature-media bc-phone">
+                    <img src="img/bc-notification.jpg"
+                         alt="Android notification shade showing two Beach Circle push notifications: a Free Pizza food alert located at COB first floor, and a new event."
+                         loading="lazy">
+                </div>
+                <div>
+                    <h3>Food alerts that respect the off switch</h3>
+                    <p>
+                        Leftover catering is the most time-sensitive thing on a campus. A user with
+                        posting permission drops an alert with a title, description and location; it
+                        writes to Firestore, appears as a pin on the shared map, and pushes to every
+                        user who has food alerts switched on.
+                    </p>
+                    <p>
+                        The half of this that actually took work was the other direction. A
+                        notification system is only trustworthy if turning it off works, so the
+                        preference check happens before the send, not in the client after delivery.
+                    </p>
+                    <ul class="bc-facts">
+                        <li>Alerts write to <code>food_alerts</code> and render on the map at their tagged building.</li>
+                        <li>Delivery is gated on each user's stored notification preferences, per category.</li>
+                        <li>Tapping a pin in the list jumps and zooms the map to that exact location.</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- 3. MODERATION -->
+            <article class="bc-feature">
+                <div class="bc-feature-media bc-phone">
+                    <img src="img/bc-dashboard.jpg"
+                         alt="Beach Circle dashboard showing the campus weather card at 72 degrees, a campus photo, and the Map Features row with Food Alert, Parking and Outlets."
+                         loading="lazy">
+                </div>
+                <div>
+                    <h3>One report pipeline for every kind of post</h3>
+                    <p>
+                        Beach Circle carries three forums, an event board and a feedback channel.
+                        Building a separate moderation flow for each would have meant four ways for
+                        the same bug to appear, so reports are polymorphic: one <code>reports</code>
+                        collection, with <code>targetType</code> and <code>targetId</code> pointing at
+                        whatever was flagged.
+                    </p>
+                    <p>
+                        Each report stores the reason, free-text detail, both user IDs and a status
+                        that starts at <code>open</code>, which gives moderators a real queue to work
+                        rather than a pile of notifications.
+                    </p>
+                    <ul class="bc-facts">
+                        <li>Reporting is available on the event board, both forums, dorm life and feedback.</li>
+                        <li>Moderator identity lives in its own <code>moderators</code> collection rather than a flag on the user document.</li>
+                        <li>Moderators can put the app into maintenance mode when a fix needs to ship.</li>
+                    </ul>
+                </div>
+            </article>
         </div>
     </section>
 
-    <main class="case-study-content">
-        
-        <div class="text-block center-text">
-            <h2>The Vision</h2>
-            <p>Developing a unified platform to connect students, streamline campus interactions, and foster a stronger digital community. Beach Circle bridges the gap between web and mobile users through a seamless, responsive architecture.</p>
-        </div>
+    <!-- ============ TESTING ============ -->
+    <section class="bc-section">
+        <div class="bc-wrap">
+            <h2>How we knew it worked</h2>
+            <p class="bc-lede">
+                Twenty-five test cases, five at each level, each one documented with expected
+                behaviour, captured output and a written verdict on whether the two matched.
+            </p>
 
-        <hr class="divider">
+            <div class="bc-levels">
+                <div><span>5</span><h4>Unit</h4><p>Sign-up, login, favouriting, notification toggles, weather fetch.</p></div>
+                <div><span>5</span><h4>Module</h4><p>Whole subsystems: forums, the shared map, resource discovery, notifications, moderation.</p></div>
+                <div><span>5</span><h4>Integration</h4><p>Features crossing boundaries &mdash; a post creating a notification, a pin resolving to a map location.</p></div>
+                <div><span>5</span><h4>System</h4><p>Concurrent devices, search responsiveness, database consistency, planned downtime.</p></div>
+                <div><span>5</span><h4>Acceptance</h4><p>Full user journeys walked end to end, from account creation to leaving a bathroom review.</p></div>
+            </div>
 
-        <div class="feature-row">
-            <div class="feature-image">
-                <img src="auth-preview.jpg" alt="User Authentication and Profile UI">
-            </div>
-            <div class="feature-text">
-                <h2>Secure Authentication & User Profiles</h2>
-                <p>I engineered the foundational identity system, ensuring secure and frictionless access for all campus users. By integrating Firebase Authentication, I created a robust system that handles secure logins, session management, and dynamic user profile data generation.</p>
-                <ul>
-                    <li>Implemented secure credential handling and session persistence.</li>
-                    <li>Designed the Flutter UI for onboarding and profile management.</li>
-                    <li>Structured NoSQL databases to efficiently link user profiles to app activity.</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="feature-row reverse">
-            <div class="feature-text">
-                <h2>Real-Time Parking Difficulty Indicator</h2>
-                <p>To solve one of the biggest pain points for commuters, I developed a dynamic parking indicator. This feature translates raw data into an intuitive, color-coded UI component within the Flutter app, giving students immediate insight into lot availability.</p>
-                <ul>
-                    <li>Built real-time database listeners to push updates instantly to the client.</li>
-                    <li>Designed responsive, visual state indicators (e.g., Red/Yellow/Green capacity).</li>
-                    <li>Optimized data fetching to minimize load times and reduce backend reads.</li>
-                </ul>
-            </div>
-            <div class="feature-image">
-                <img src="parking-preview.jpg" alt="Parking Difficulty Indicator UI">
-            </div>
-        </div>
-
-        <div class="feature-row">
-            <div class="feature-image">
-                <img src="moderation-preview.jpg" alt="Content Moderation System">
-            </div>
-            <div class="feature-text">
-                <h2>Community Content Moderation System</h2>
-                <p>To maintain a safe and productive campus environment, I architected a comprehensive moderation pipeline. This system empowers administrators to efficiently review, flag, and manage user-generated content across the platform.</p>
-                <ul>
-                    <li>Developed administrative privileges and role-based access control.</li>
-                    <li>Created secure backend logic for flagging and hiding inappropriate content.</li>
-                    <li>Built an administrative dashboard UI for quick content review and action.</li>
-                </ul>
+            <div class="bc-callout">
+                <img src="img/bc-notification.jpg"
+                     alt="Android notification shade showing the Free Pizza food alert delivered to a subscribed device."
+                     loading="lazy">
+                <div>
+                    <h3>The test I'd point to first</h3>
+                    <p>
+                        Account A enables food alerts. Account B posts <em>Free Pizza</em> at the COB.
+                        A receives the push. A then turns food alerts off, B posts <em>Free Cookies</em>,
+                        and the alert is confirmed written to Firestore &mdash; but A's device stays
+                        silent.
+                    </p>
+                    <p>
+                        Verifying that the feature fires is the easy half. Verifying that it stays
+                        quiet when a user has opted out is the half that catches real bugs, and it is
+                        the difference between a notification system people keep enabled and one they
+                        uninstall the app over.
+                    </p>
+                </div>
             </div>
         </div>
+    </section>
 
-        <hr class="divider">
+    <!-- ============ DATA MODEL ============ -->
+    <section class="bc-section">
+        <div class="bc-wrap">
+            <h2>The data model</h2>
+            <p class="bc-lede">
+                Everything runs on a single Cloud Firestore database. Fifteen top-level collections,
+                split roughly between campus resources, community content and account state.
+            </p>
 
-        <div class="text-block center-text">
-            <h2>Explore the Code</h2>
-            <p>Dive into the repository to review the Flutter architecture, Firebase integration, and commit history.</p>
-            <a href="https://github.com/ReyCS3/beach-circle" target="_blank" class="button">View GitHub Repository</a>
+            <ul class="bc-collections">
+                <li>users</li>
+                <li>moderators</li>
+                <li>reports</li>
+                <li>feedback</li>
+                <li>forumPosts</li>
+                <li>forumCategories</li>
+                <li>forum_requests</li>
+                <li>eb_events</li>
+                <li>dorm_events</li>
+                <li>food_alerts</li>
+                <li>parking_lots</li>
+                <li>outlets</li>
+                <li>study_halls</li>
+                <li>pins</li>
+                <li>demo_test_users</li>
+            </ul>
+
+            <img src="img/bc-firestore-reports.jpg"
+                 alt="Firebase console showing the reports collection, with one document expanded to reveal its createdAt, details, reason, reportedUserId, reporterUserId, status, targetId and targetType fields."
+                 class="bc-shot" loading="lazy">
+            <p class="bc-caption">
+                A live report document. <code>targetType</code> and <code>targetId</code> are what let one
+                collection serve every surface in the app that accepts user content.
+            </p>
         </div>
-        
+    </section>
+
+    <!-- ============ RETRO ============ -->
+    <section class="bc-section">
+        <div class="bc-wrap">
+            <h2>What I'd do differently</h2>
+
+            <ul class="bc-retro">
+                <li>
+                    <strong>Settle the naming convention on day one.</strong>
+                    <span><code>forumPosts</code> and <code>forumCategories</code> are camelCase while
+                    <code>food_alerts</code>, <code>parking_lots</code> and <code>study_halls</code> are
+                    snake_case. Five people writing queries against inconsistent collection names is a
+                    small tax paid on every single feature, and it costs nothing to fix in week one.</span>
+                </li>
+                <li>
+                    <strong>Keep test fixtures out of the production database.</strong>
+                    <span><code>demo_test_users</code> sits alongside real data. It should have lived in a
+                    separate Firebase project, or been seeded and torn down by an emulator, so that no
+                    query ever has to remember to exclude it.</span>
+                </li>
+                <li>
+                    <strong>Measure the thing we claimed.</strong>
+                    <span>We verified behaviour thoroughly and performance not at all &mdash; no read counts,
+                    no cold-start timings, no query profiling. On a Firestore app, reads are the bill,
+                    and I'd instrument that from the start next time.</span>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ============ LINKS ============ -->
+    <section class="bc-section">
+        <div class="bc-wrap">
+            <h2>Look at the code</h2>
+            <p>The full Flutter source, Firestore rules, and the two-semester commit history.</p>
+
+            <div class="bc-out">
+                <!-- VERIFY: this is the repo listed in the final submission. Confirm it's public. -->
+                <a href="https://github.com/21TN2/Beach-Circle" target="_blank" rel="noopener" class="bc-btn">GitHub repository</a>
+                <a href="https://youtu.be/3PNRESckmTY" target="_blank" rel="noopener" class="bc-btn bc-btn-ghost">Watch the demo</a>
+            </div>
+        </div>
+    </section>
+
     </main>
+
+    <footer class="bc-foot">
+        <div class="bc-wrap">
+            <p>Beach Circle &mdash; CECS 491A&ndash;B senior capstone, California State University, Long Beach.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

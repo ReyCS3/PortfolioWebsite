@@ -3,75 +3,232 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rey Sioson | Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+
+    <title>Rey Sioson — Computer Science, CSULB</title>
+    <meta name="description" content="Reynaldo Sioson III, Computer Science senior at CSULB. Flutter and Firebase apps, multiplayer game systems in Luau, and CAD design for 3D fabrication.">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Rey Sioson — Computer Science, CSULB">
+    <meta property="og:description" content="Flutter and Firebase apps, multiplayer game systems in Luau, and CAD design for 3D fabrication.">
+    <meta property="og:image" content="https://reycs3.github.io/PortfolioWebsite/img/thumb-beach-circle.jpg">
+    <meta property="og:url" content="https://reycs3.github.io/PortfolioWebsite/">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="home.css">
 </head>
 <body>
-    <!-- GLOBAL TOP NAVIGATION -->
+
+    <a href="#work" class="skip-link">Skip to projects</a>
+
     <nav class="global-nav">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">Rey Sioson</a>
             <div class="nav-links">
-                <!-- Links back to the homepage sections -->
-                <a href="index.html">Home</a>
-                <a href="projects.html">All Projects</a>
-                <a href="https://linkedin.com/in/reynaldo-sioson-8279ab2aa" target="_blank">LinkedIn</a>
+                <a href="index.html" aria-current="page">Home</a>
+                <a href="projects.html">All projects</a>
+                <a href="#about">About</a>
+                <a href="https://linkedin.com/in/reynaldo-sioson-8279ab2aa" target="_blank" rel="noopener">LinkedIn</a>
             </div>
         </div>
     </nav>
-    
-    <main class="hero">
-        <div class="hero-content">
-            <img src="profile.png" alt="Reynaldo Sioson III" class="profile-pic">
-            
-            <h1>Hi, I'm Reynaldo Sioson III</h1>
-            <p>A Computer Science senior at CSULB specializing in software development, full-stack applications, and interactive experiences.</p>
-            
-            <a href="projects.html" class="button">View My Projects</a>
 
-            <!-- SOCIAL LINKS SECTION -->
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/reynaldo-sioson-8279ab2aa" target="_blank" class="social-btn">LinkedIn</a>
-                <a href="https://github.com/ReyCS3" target="_blank" class="social-btn">GitHub</a>
-                <button id="email-btn" class="social-btn" onclick="copyEmail()">Email</button>
+    <!-- ============ INTRO ============
+         Compact on purpose. The first project row should be visible at the
+         bottom of the screen on a laptop — that's what earns the scroll. -->
+    <header class="intro">
+        <div class="wrap">
+            <div>
+                <h1>Reynaldo Sioson III</h1>
+                <p class="intro-lede">
+                    <!-- EDIT: this line does more work than anything else on the page.
+                         Keep it specific — what you build, not what you're "passionate about". -->
+                    Computer Science senior at CSULB. I build software that ships to real
+                    users and hardware I can hold, usually in the same week &mdash; a campus
+                    utility app for CSULB students, a multiplayer game with CAD modelling
+                    tools inside it, and whatever is currently on the 3D printer.
+                </p>
+
+                <div class="intro-links">
+                    <a href="https://github.com/ReyCS3" target="_blank" rel="noopener">GitHub</a>
+                    <a href="https://www.linkedin.com/in/reynaldo-sioson-8279ab2aa" target="_blank" rel="noopener">LinkedIn</a>
+                    <button id="email-btn" type="button">Copy email</button>
+                    <!-- EDIT: add a résumé PDF to the repo and uncomment.
+                    <a href="Rey-Sioson-Resume.pdf" target="_blank" rel="noopener">Résumé</a>
+                    -->
+                </div>
             </div>
-        </div>
-        
-        <!-- SCROLL INDICATOR -->
-        <div class="scroll-indicator">
-            <p>Scroll to Learn More</p>
-            <div class="chevron">↓</div>
-        </div>
-    </main>
-    </main>
 
-<!-- ABOUT ME SECTION -->
-    <section class="about-section">
-        <div class="about-container">
-            <h2>About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>Beyond the screen, I am a builder and a problem solver at heart. As a Computer Science senior at CSULB, my passion lies at the intersection of digital architecture and physical engineering.</p>
-                    <p>Whether I am structuring backend databases, dialing in custom fabrications on my SidewinderX1 3D printer, or doing DIY mechanical diagnostics on a classic '98 SL500, I am driven by the challenge of figuring out how complex systems work—and how to make them better.</p>
-                    <p>My professional foundation includes hands-on operational experience at Disney California Adventure. Navigating high-capacity, fast-paced environments taught me how to troubleshoot under pressure, adapt on the fly, and collaborate seamlessly. I bring that same operational resilience to every engineering project I touch.</p>
-                    <p>When I step away from my code editor, I am usually competing in league bowling (always chasing that 200 average), optimizing my PC rig, or experimenting with music production in FL Studio.</p>
-                </div>
-                
-                <div class="skills-column">
-                    <h3>Core Competencies</h3>
-                    <div class="skills-grid">
-                        <span class="skill-tag">Full-Stack Development</span>
-                        <span class="skill-tag">Flutter & Firebase</span>
-                        <span class="skill-tag">Physical Prototyping</span>
-                        <span class="skill-tag">CAD & 3D Fabrication</span>
-                        <span class="skill-tag">Lua & Game Logic</span>
-                        <span class="skill-tag">Operational Resilience</span>
+            <img src="profile.png" alt="Reynaldo Sioson III" class="intro-photo">
+        </div>
+    </header>
+
+    <main>
+
+    <!-- ============ WORK ============ -->
+    <section class="section" id="work" style="border-top:0;">
+        <div class="wrap">
+            <h2>Selected work</h2>
+            <p class="section-lede">Three projects, each with the reasoning behind it written up.</p>
+
+            <div style="margin-top:26px;">
+
+                <!-- 1. BEACH CIRCLE — live -->
+                <article class="work-row reveal">
+                    <a href="beach-circle.html">
+                        <img src="img/thumb-beach-circle.jpg"
+                             alt="Beach Circle campus map showing parking lots with live difficulty status."
+                             class="work-thumb">
+                    </a>
+                    <div>
+                        <h3><a href="beach-circle.html">Beach Circle</a></h3>
+                        <p>
+                            A Flutter and Firebase app that answers the questions CSULB students
+                            guess at every day: which lot still has parking, which classroom is
+                            free, where there's a working outlet. Nineteen features, five
+                            developers, two semesters, twenty-five documented test cases.
+                        </p>
+                        <ul class="work-tags">
+                            <li>Flutter</li><li>Dart</li><li>Cloud Firestore</li>
+                            <li>Firebase Auth</li><li>Cloud Messaging</li><li>Google Maps</li>
+                        </ul>
+                        <div class="work-links">
+                            <a href="beach-circle.html">Read the case study</a>
+                            <a href="https://youtu.be/3PNRESckmTY" target="_blank" rel="noopener">Watch the demo</a>
+                        </div>
                     </div>
-                </div>
+                </article>
+
+                <!-- 2. CAD BUILD BATTLES — in progress
+                     TODO: replace img/thumb-cad-build-battles.svg with a real
+                     Roblox Studio screenshot, and build cad-build-battles.html. -->
+                <article class="work-row reveal">
+                    <img src="img/thumb-cad-build-battles.svg"
+                         alt="Placeholder image for CAD Build Battles."
+                         class="work-thumb">
+                    <div>
+                        <h3>CAD Build Battles <span class="work-status">In progress</span></h3>
+                        <p>
+                            A round-based multiplayer Roblox game that swaps Minecraft's block
+                            palette for parametric modelling: players sketch on a plane, then
+                            extrude and revolve it into a solid, and get scored on the result.
+                            Sole developer &mdash; I design the systems and drive implementation
+                            through an AI coding assistant, then debug and integrate in Studio.
+                            Round state machine, plot allocation, a CAD-style camera, and mesh
+                            manipulation built on EditableMesh.
+                        </p>
+                        <ul class="work-tags">
+                            <li>Luau</li><li>Roblox Studio</li><li>EditableMesh</li><li>State machines</li>
+                        </ul>
+                        <div class="work-links">
+                            <!-- <a href="cad-build-battles.html">Read the case study</a> -->
+                            <a href="https://github.com/ReyCS3" target="_blank" rel="noopener">Case study coming soon</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 3. FABRICATION
+-->
+                <article class="work-row reveal">
+                    <img src="img/thumb-fabrication.jpg"
+                         alt="A gear part mid-print on a Sidewinder X1, the hotend laying down infill under the part cooling fan."
+                         class="work-thumb">
+                    <div>
+                        <h3>CAD &amp; 3D fabrication</h3>
+                        <p>
+                            <!-- EDIT: name one specific part you designed and printed, what it
+                                 was for, and what you had to change between the first print and
+                                 the one that worked. That story is the whole value of this entry. -->
+                            Parts designed in Fusion 360 and printed on a Sidewinder X1 &mdash;
+                            modelling with sketches, extrusions, revolves, sweeps and lofts, then
+                            iterating on tolerances until the printed part actually fits.
+                        </p>
+                        <ul class="work-tags">
+                            <li>Fusion 360</li><li>FDM printing</li><li>Tolerance testing</li>
+                        </ul>
+                        <div class="work-links">
+                            <a href="projects.html">See the builds</a>
+                        </div>
+                    </div>
+                </article>
+
             </div>
         </div>
     </section>
 
-<script src="script.js"></script>
+    <!-- ============ ABOUT ============ -->
+    <section class="section" id="about">
+        <div class="wrap">
+            <h2>About me</h2>
+
+            <div class="about-grid reveal">
+                <div>
+                    <p>
+                        I'm a builder and a problem solver at heart. As a Computer Science senior
+                        at CSULB, my interest sits where digital architecture meets physical
+                        engineering &mdash; and I'm happiest on projects that need both.
+                    </p>
+                    <p>
+                        Whether I'm structuring a Firestore schema, dialling in a custom fabrication
+                        on my Sidewinder X1, or doing mechanical diagnostics on a '98 SL500, the
+                        appeal is the same: working out how a complex system actually behaves, then
+                        making it behave better.
+                    </p>
+                    <p>
+                        My professional foundation is hands-on operational experience at Disney
+                        California Adventure. High-capacity, fast-paced environments taught me to
+                        troubleshoot under pressure, adapt on the fly, and work in a team where
+                        everyone is already busy. That transfers to engineering more directly than
+                        I expected it to.
+                    </p>
+                    <p>
+                        Outside of work I run a self-hosted Purpur Minecraft server for friends,
+                        tunnelled through playit.gg after a hosted provider couldn't keep up. I also
+                        bowl in a league (still chasing a 200 average), tune my PC, and make music
+                        in FL Studio.
+                    </p>
+                </div>
+
+                <aside class="about-side">
+                    <h3>Core competencies</h3>
+                    <ul class="skill-list">
+                        <li>Full-stack development</li>
+                        <li>Flutter &amp; Firebase</li>
+                        <li>Luau &amp; game logic</li>
+                        <li>CAD &amp; 3D fabrication</li>
+                        <li>Physical prototyping</li>
+                        <li>C++ &amp; Python</li>
+                    </ul>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="section" id="contact">
+        <div class="wrap">
+            <h2>Get in touch</h2>
+            <p class="section-lede">
+                Open to software engineering internships and new-grad roles starting 2027.
+                <!-- EDIT: correct the year and role type to match what you're actually looking for. -->
+            </p>
+            <div class="contact-actions">
+                <button id="email-btn-2" type="button" class="btn">Copy email</button>
+                <a href="https://www.linkedin.com/in/reynaldo-sioson-8279ab2aa" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
+                <a href="https://github.com/ReyCS3" target="_blank" rel="noopener" class="btn btn-ghost">GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    </main>
+
+    <footer class="site-foot">
+        <div class="wrap">
+            <p>&copy; 2026 Reynaldo Sioson III</p>
+            <p>Long Beach, California</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
